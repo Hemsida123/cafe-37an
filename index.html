@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<!--
+DESIGN: Café 37:an, Lindesberg — established café + gelato + godisbutik sedan 1991.
+Feeling in first 2 sec: varmt, äkta, "stamlokal"-känsla — inte corporate, inte kylig minimalism.
+Ska kännas som ett omtyckt litet-stads-fik man redan känner, med hantverk (egen gelato) och hög kvalitet.
+Typsnitt: DM Serif Display (rubriker, varm/välkomnande serif, INTE Fraunces — undviker wavy-kritik från tidigare projekt) + Plus Jakarta Sans (brödtext, rundade terminaler, mjukare än Inter).
+Färgstory: kolsvart/varm-svart (#1b1712, från deras logobricka) + körsbärsröd (#b3392c, moderniserad från markisens röda) + varm gräddvit botten (#faf6ef, bakverks-papper) + senapsguld accent (#d99a44, från gelato/godis-känslan).
+Motiv: ovalt "stämpel"-märke (ekar deras riktiga svarta ovala logo) + vågig/scallop-kant som återkommer som avdelare (markis-känsla).
+Rörelse: korta scroll-reveals (~700ms ease-out), mjuka hover-lyft, inga studsiga effekter. Ingen animation på pris/rubrik som ska läsas direkt.
+-->
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Café 37:an — Lindesbergs omtyckta fik sedan 1991 | Gelato, bakverk & lunch</title>
+<meta name="description" content="Café 37:an i Lindesberg. Hemgjord gelato, nybakade baguetter, sallader och dagens lunch. Två platser: Kungsgatan 37 och Regnbågen vid lasarettet. Betyg 4.4/5 på Google (213 omdömen).">
+<meta name="keywords" content="café Lindesberg, gelato Lindesberg, fik Lindesberg, lunch Lindesberg, bageri Lindesberg, godisbutik Lindesberg, Café 37:an">
+<link rel="canonical" href="https://37an.se/">
+<meta property="og:title" content="Café 37:an — Lindesbergs omtyckta fik sedan 1991">
+<meta property="og:description" content="Hemgjord gelato, nybakade baguetter, sallader och dagens lunch. Två platser i Lindesberg. Betyg 4.4/5 på Google.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://37an.se/">
+<meta property="og:image" content="https://images.unsplash.com/photo-1738016470578-c4ca7be7db69?w=1200">
+<meta property="og:locale" content="sv_SE">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="robots" content="index, follow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CafeOrCoffeeShop",
+  "name": "Café 37:an",
+  "image": "https://images.unsplash.com/photo-1738016470578-c4ca7be7db69",
+  "url": "https://37an.se/",
+  "telephone": "+46581-17733",
+  "email": "info@37an.se",
+  "servesCuisine": ["Café", "Gelato", "Bageri", "Lunch"],
+  "priceRange": "$$",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Kungsgatan 37",
+    "addressLocality": "Lindesberg",
+    "addressCountry": "SE"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.4",
+    "reviewCount": "213",
+    "bestRating": "5"
+  },
+  "openingHoursSpecification": [
+    {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:30", "closes": "18:00"},
+    {"@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "10:00", "closes": "16:00"},
+    {"@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "11:00", "closes": "15:00"}
+  ]
+}
+</script>
+<style>
+:root{
+  --ink:#1b1712;
+  --ink-soft:#5a5148;
+  --red:#b3392c;
+  --red-deep:#8f2c22;
+  --gold:#d99a44;
+  --cream:#faf6ef;
+  --cream-deep:#f1e9db;
+  --white:#fffdf9;
+  --line:#e4dac8;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Plus Jakarta Sans',sans-serif;
+  color:var(--ink);
+  background:var(--cream);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+h1,h2,h3,h4{
+  font-family:'DM Serif Display',serif;
+  font-weight:400;
+  line-height:1.12;
+  color:var(--ink);
+}
+a{color:inherit;text-decoration:none;}
+img{max-width:100%;display:block;}
+.wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+section{padding:96px 0;}
+
+/* scallop divider motif */
+.scallop{
+  height:22px;
+  width:100%;
+  background-image:radial-gradient(circle at 11px -3px, transparent 12px, var(--cream) 12.5px);
+  background-size:22px 22px;
+  background-repeat:repeat-x;
+}
+.scallop.on-cream{background-image:radial-gradient(circle at 11px -3px, transparent 12px, var(--white) 12.5px);}
+.scallop.to-cream{background-image:radial-gradient(circle at 11px -3px, transparent 12px, var(--cream) 12.5px);}
+.scallop.to-ink{background-image:radial-gradient(circle at 11px -3px, transparent 12px, var(--ink) 12.5px);}
+
+/* oval badge motif */
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  border:1.5px solid var(--red);
+  border-radius:100px;
+  padding:7px 18px;
+  font-size:.78rem;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  font-weight:600;
+  color:var(--red-deep);
+}
+.badge.dark{border-color:rgba(255,253,249,.4);color:var(--white);}
+.badge.gold{border-color:var(--gold);color:var(--gold);}
+
+/* reveal animation */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.6,.25,1),transform .7s cubic-bezier(.2,.6,.25,1);}
+.reveal.in{opacity:1;transform:translateY(0);}
+.reveal-delay-1{transition-delay:.1s;}
+.reveal-delay-2{transition-delay:.2s;}
+.reveal-delay-3{transition-delay:.3s;}
+
+/* ===== HEADER ===== */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  background:rgba(250,246,239,.88);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid transparent;
+  transition:border-color .3s ease, background .3s ease;
+}
+header.scrolled{border-bottom-color:var(--line);background:rgba(250,246,239,.97);}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:18px 32px;max-width:1180px;margin:0 auto;}
+.logo{display:flex;align-items:center;gap:10px;}
+.logo-mark{
+  width:42px;height:42px;border-radius:50%;background:var(--ink);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  border:2px solid var(--red);
+}
+.logo-mark span{font-family:'DM Serif Display',serif;font-style:italic;color:var(--white);font-size:1.05rem;}
+.logo-text{font-family:'DM Serif Display',serif;font-size:1.28rem;color:var(--ink);}
+.nav-links{display:flex;gap:34px;align-items:center;}
+.nav-links a{font-size:.92rem;font-weight:600;color:var(--ink-soft);transition:color .2s ease;}
+.nav-links a:hover{color:var(--red);}
+.nav-cta{
+  background:var(--red);color:var(--white)!important;padding:11px 22px;border-radius:100px;
+  font-size:.88rem;font-weight:700;transition:background .2s ease, transform .2s ease;
+}
+.nav-cta:hover{background:var(--red-deep);transform:translateY(-1px);}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:6px;}
+.burger span{width:24px;height:2px;background:var(--ink);border-radius:2px;transition:transform .25s ease, opacity .25s ease;}
+.mobile-menu{
+  display:none;position:fixed;inset:0;background:var(--cream);z-index:999;
+  padding:100px 32px 40px;flex-direction:column;gap:8px;
+  opacity:0;pointer-events:none;transition:opacity .3s ease;
+}
+.mobile-menu.open{opacity:1;pointer-events:auto;}
+.mobile-menu a{font-family:'DM Serif Display',serif;font-size:1.7rem;padding:14px 0;border-bottom:1px solid var(--line);}
+.mobile-menu .nav-cta{margin-top:24px;text-align:center;font-family:'Plus Jakarta Sans',sans-serif;}
+
+/* ===== HERO ===== */
+.hero{
+  position:relative;min-height:100vh;display:flex;align-items:center;
+  padding:140px 0 100px;overflow:hidden;
+  background:var(--ink);
+}
+.hero-bg{position:absolute;inset:0;}
+.hero-bg img{width:100%;height:100%;object-fit:cover;opacity:.55;}
+.hero-bg::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(27,23,18,.55) 0%,rgba(27,23,18,.35) 40%,rgba(27,23,18,.92) 100%);
+}
+.hero-content{position:relative;z-index:2;max-width:1180px;margin:0 auto;padding:0 32px;}
+.hero h1{
+  font-size:clamp(2.6rem,6vw,4.6rem);color:var(--white);margin:22px 0 22px;max-width:820px;
+}
+.hero h1 em{font-style:italic;color:var(--gold);}
+.hero p.lead{
+  font-size:1.2rem;color:rgba(255,253,249,.88);max-width:560px;margin-bottom:38px;font-weight:400;
+}
+.hero-ctas{display:flex;gap:16px;flex-wrap:wrap;}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;padding:16px 30px;border-radius:100px;
+  font-size:.95rem;font-weight:700;transition:transform .2s ease, background .2s ease, box-shadow .2s ease;
+}
+.btn-primary{background:var(--red);color:var(--white);}
+.btn-primary:hover{background:var(--red-deep);transform:translateY(-2px);box-shadow:0 14px 30px rgba(179,57,44,.35);}
+.btn-ghost{background:transparent;color:var(--white);border:1.5px solid rgba(255,253,249,.45);}
+.btn-ghost:hover{border-color:var(--white);background:rgba(255,253,249,.08);}
+.btn-dark{background:var(--ink);color:var(--white);}
+.btn-dark:hover{background:#000;transform:translateY(-2px);}
+
+/* ===== TRUST STRIP ===== */
+.trust{background:var(--white);border-bottom:1px solid var(--line);}
+.trust-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  border-left:1px solid var(--line);
+}
+.trust-item{
+  padding:30px 26px;border-right:1px solid var(--line);text-align:center;
+}
+.trust-item .num{font-family:'DM Serif Display',serif;font-size:2rem;color:var(--red);display:block;margin-bottom:4px;}
+.trust-item .lbl{font-size:.82rem;color:var(--ink-soft);font-weight:600;}
+
+/* ===== ABOUT ===== */
+.about{background:var(--cream);}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center;}
+.about-copy .eyebrow{margin-bottom:20px;}
+.about h2{font-size:clamp(2rem,3.6vw,2.9rem);margin-bottom:22px;}
+.about p{color:var(--ink-soft);font-size:1.03rem;margin-bottom:18px;max-width:480px;}
+.about-visual{position:relative;}
+.about-visual .frame{border-radius:6px;overflow:hidden;aspect-ratio:4/5;}
+.about-visual .frame img{width:100%;height:100%;object-fit:cover;}
+.about-visual .float-badge{
+  position:absolute;bottom:-24px;left:-24px;background:var(--ink);color:var(--white);
+  padding:22px 26px;border-radius:6px;box-shadow:0 20px 40px rgba(27,23,18,.25);
+  max-width:220px;
+}
+.about-visual .float-badge .yr{font-family:'DM Serif Display',serif;font-style:italic;font-size:1.7rem;color:var(--gold);}
+.about-visual .float-badge p{color:rgba(255,253,249,.8);font-size:.82rem;margin:2px 0 0;}
+
+/* ===== MENU HIGHLIGHTS ===== */
+.menu-section{background:var(--white);}
+.section-head{max-width:640px;margin:0 auto 54px;text-align:center;}
+.section-head h2{font-size:clamp(2rem,3.6vw,2.9rem);margin:16px 0 14px;}
+.section-head p{color:var(--ink-soft);font-size:1.03rem;}
+.menu-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line);}
+.menu-card{
+  border-right:1px solid var(--line);border-bottom:1px solid var(--line);
+  overflow:hidden;position:relative;min-height:340px;display:flex;align-items:flex-end;
+}
+.menu-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.6,.25,1);}
+.menu-card:hover img{transform:scale(1.06);}
+.menu-card::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(27,23,18,0) 40%,rgba(27,23,18,.86) 100%);}
+.menu-card-body{position:relative;z-index:2;padding:26px 24px;color:var(--white);}
+.menu-card-body h3{font-size:1.35rem;color:var(--white);margin-bottom:6px;}
+.menu-card-body p{font-size:.88rem;color:rgba(255,253,249,.85);}
+
+/* ===== LUNCH STRIP ===== */
+.lunch{background:var(--ink);color:var(--white);}
+.lunch-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:60px;align-items:center;}
+.lunch h2{color:var(--white);font-size:clamp(1.9rem,3.4vw,2.6rem);margin:16px 0 18px;}
+.lunch p{color:rgba(255,253,249,.75);font-size:1.02rem;max-width:460px;margin-bottom:26px;}
+.lunch-price-card{background:rgba(255,253,249,.06);border:1px solid rgba(255,253,249,.15);border-radius:8px;padding:34px;}
+.price-row{display:flex;justify-content:space-between;align-items:baseline;padding:16px 0;border-bottom:1px solid rgba(255,253,249,.12);}
+.price-row:last-child{border-bottom:none;}
+.price-row .pname{font-weight:600;font-size:1rem;}
+.price-row .psub{display:block;font-size:.8rem;color:rgba(255,253,249,.55);font-weight:400;margin-top:2px;}
+.price-row .pval{font-family:'DM Serif Display',serif;font-size:1.5rem;color:var(--gold);}
+
+/* ===== GELATO SPOTLIGHT ===== */
+.gelato{background:var(--cream);position:relative;}
+.gelato-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center;}
+.gelato-visual{border-radius:6px;overflow:hidden;aspect-ratio:5/4;}
+.gelato-visual img{width:100%;height:100%;object-fit:cover;}
+.gelato h2{font-size:clamp(2rem,3.6vw,2.9rem);margin:16px 0 20px;}
+.gelato p{color:var(--ink-soft);font-size:1.03rem;margin-bottom:16px;max-width:480px;}
+.flavor-tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px;}
+.flavor-tags span{
+  border:1px solid var(--line);background:var(--white);border-radius:100px;
+  padding:8px 16px;font-size:.85rem;font-weight:600;color:var(--ink-soft);
+}
+
+/* ===== LOCATIONS ===== */
+.locations{background:var(--white);}
+.loc-grid{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line);border-left:1px solid var(--line);}
+.loc-card{border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:40px 38px;}
+.loc-card h3{font-size:1.5rem;margin-bottom:4px;}
+.loc-card .tag{display:inline-block;font-size:.76rem;font-weight:700;color:var(--red-deep);text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px;}
+.loc-detail{display:flex;gap:12px;padding:10px 0;border-top:1px solid var(--line);font-size:.92rem;}
+.loc-detail:first-of-type{border-top:none;margin-top:14px;}
+.loc-detail .k{color:var(--ink-soft);min-width:88px;font-weight:600;}
+.loc-detail .v{color:var(--ink);}
+
+/* ===== REVIEWS ===== */
+.reviews{background:var(--cream);}
+.review-top{display:flex;align-items:center;gap:40px;flex-wrap:wrap;margin-bottom:50px;}
+.rating-big{display:flex;align-items:center;gap:20px;}
+.rating-big .score{font-family:'DM Serif Display',serif;font-size:4rem;color:var(--red);}
+.rating-big .stars{color:var(--gold);font-size:1.3rem;letter-spacing:2px;}
+.rating-big .count{color:var(--ink-soft);font-size:.9rem;margin-top:4px;}
+.review-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line);border-left:1px solid var(--line);}
+.review-card{border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:32px 30px;background:var(--white);}
+.review-card .stars{color:var(--gold);font-size:.95rem;margin-bottom:14px;letter-spacing:2px;}
+.review-card p{font-size:.96rem;color:var(--ink);margin-bottom:18px;font-style:italic;}
+.review-card .src{font-size:.8rem;color:var(--ink-soft);font-weight:600;display:flex;align-items:center;gap:8px;}
+
+/* ===== CONTACT / FOOTER ===== */
+.contact{background:var(--ink);color:var(--white);}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;}
+.contact h2{color:var(--white);font-size:clamp(2rem,3.6vw,2.8rem);margin:16px 0 20px;}
+.contact p.lead{color:rgba(255,253,249,.72);font-size:1.02rem;max-width:440px;margin-bottom:30px;}
+.contact-cta-row{display:flex;gap:14px;flex-wrap:wrap;}
+.contact-info{border-top:1px solid rgba(255,253,249,.18);}
+.contact-info .row{display:flex;justify-content:space-between;padding:20px 0;border-bottom:1px solid rgba(255,253,249,.18);font-size:.95rem;}
+.contact-info .row .k{color:rgba(255,253,249,.55);}
+.contact-info .row .v{color:var(--white);font-weight:600;text-align:right;}
+footer{background:#120f0b;color:rgba(255,253,249,.5);padding:36px 0;}
+.footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;font-size:.85rem;}
+.footer-inner a{color:rgba(255,253,249,.7);}
+.social-row{display:flex;gap:16px;}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width:860px){
+  .nav-links{display:none;}
+  .burger{display:flex;}
+  .mobile-menu{display:flex;}
+  .trust-grid{grid-template-columns:repeat(2,1fr);}
+  .about-grid,.gelato-grid,.lunch-grid,.contact-grid{grid-template-columns:1fr;gap:40px;}
+  .about-visual{order:-1;}
+  .about-visual .float-badge{position:static;margin-top:-40px;margin-left:20px;display:inline-block;}
+  .menu-grid{grid-template-columns:1fr 1fr;}
+  .loc-grid{grid-template-columns:1fr;}
+  .review-grid{grid-template-columns:1fr;}
+  section{padding:70px 0;}
+  .hero{padding:120px 0 70px;min-height:auto;}
+  .hero-ctas{flex-direction:column;}
+  .hero-ctas .btn{width:100%;justify-content:center;}
+}
+@media (max-width:520px){
+  .menu-grid{grid-template-columns:1fr;}
+  .trust-grid{grid-template-columns:1fr 1fr;}
+  .wrap{padding:0 20px;}
+  .nav{padding:16px 20px;}
+}
+</style>
+</head>
+<body>
+
+<header id="siteHeader">
+  <div class="nav">
+    <a href="#top" class="logo">
+      <div class="logo-mark"><span><em>37</em></span></div>
+      <span class="logo-text">Café 37:an</span>
+    </a>
+    <nav class="nav-links">
+      <a href="#om">Om oss</a>
+      <a href="#meny">Meny</a>
+      <a href="#gelato">Gelato</a>
+      <a href="#hitta">Hitta hit</a>
+      <a href="#recensioner">Recensioner</a>
+      <a href="tel:0581-17733" class="nav-cta">Ring oss</a>
+    </nav>
+    <button class="burger" id="burgerBtn" aria-label="Meny">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#om">Om oss</a>
+  <a href="#meny">Meny</a>
+  <a href="#gelato">Gelato</a>
+  <a href="#hitta">Hitta hit</a>
+  <a href="#recensioner">Recensioner</a>
+  <a href="tel:0581-17733" class="btn btn-primary nav-cta">Ring 0581-177 33</a>
+</div>
+
+<section class="hero" id="top">
+  <div class="hero-bg">
+    <img src="https://images.unsplash.com/photo-1738016470578-c4ca7be7db69?w=1600&q=80" alt="Kaffekopp på träbord" loading="eager">
+  </div>
+  <div class="hero-content">
+    <span class="badge dark">Lindesberg · Sedan 1991</span>
+    <h1>Hit vill du åka.<br><em>Här vill du stanna.</em></h1>
+    <p class="lead">Hemgjord gelato, nybakade baguetter och dagens lunch — Café 37:an är Lindesbergs givna mötesplats, mitt i centrum.</p>
+    <div class="hero-ctas">
+      <a href="#hitta" class="btn btn-primary">Hitta hit</a>
+      <a href="#meny" class="btn btn-ghost">Se vad vi bjuder på</a>
+    </div>
+  </div>
+</section>
+
+<section class="trust">
+  <div class="wrap" style="padding:0;">
+    <div class="trust-grid">
+      <div class="trust-item"><span class="num">4.4/5</span><span class="lbl">213 Google-omdömen</span></div>
+      <div class="trust-item"><span class="num">1991</span><span class="lbl">Öppnade i Lindesberg</span></div>
+      <div class="trust-item"><span class="num">2</span><span class="lbl">Platser i stan</span></div>
+      <div class="trust-item"><span class="num">100%</span><span class="lbl">Egen gelato, gjord här</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="om">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-copy reveal">
+        <span class="badge">Om Café 37:an</span>
+        <h2>Ett fik som Lindesberg vuxit upp med</h2>
+        <p>Sedan 1991 har Café 37:an varit den självklara platsen mitt i centrum — dit man går för fika med gamla vänner, en snabb lunch mellan mötena, eller glass en varm sommarkväll.</p>
+        <p>Vi bakar våra baguetter och gör vår gelato från grunden, varje dag. Inga genvägar, ingen massproduktion — bara hederligt hantverk och råvaror vi själva skulle vilja äta.</p>
+        <p>Och när du ändå är här — kika in i vår godisbutik. Den har funnits lika länge som fiket, och den är precis lika omtyckt.</p>
+      </div>
+      <div class="about-visual reveal reveal-delay-1">
+        <div class="frame">
+          <img src="https://images.unsplash.com/photo-1573822028151-731623cb0722?w=900&q=80" alt="Varm och inbjudande caféinteriör" loading="lazy">
+        </div>
+        <div class="float-badge">
+          <span class="yr">35 år</span>
+          <p>av hantverk, fika och gelato i Lindesberg</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="menu-section" id="meny">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="badge">Vår meny</span>
+      <h2>Gjort för hand, varje dag</h2>
+      <p>Baguetter, sallader, panini, tacos och dagens lunch — allt tillagat på plats med råvaror vi står bakom.</p>
+    </div>
+    <div class="menu-grid reveal">
+      <div class="menu-card">
+        <img src="https://images.unsplash.com/photo-1554433607-66b5efe9d304?w=800&q=80" alt="Nybakad baguette med fyllning" loading="lazy">
+        <div class="menu-card-body"><h3>Baguetter</h3><p>Nybakat bröd, fyllt efter smak</p></div>
+      </div>
+      <div class="menu-card">
+        <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=800&q=80" alt="Fräsch och färgglad sallad" loading="lazy">
+        <div class="menu-card-body"><h3>Sallader</h3><p>Fräscht, mättande, gjort på plats</p></div>
+      </div>
+      <div class="menu-card">
+        <img src="https://images.unsplash.com/photo-1521390188846-e2a3a97453a0?w=800&q=80" alt="Panini med skinka och ost" loading="lazy">
+        <div class="menu-card-body"><h3>Panini &amp; Tacos</h3><p>Snabbt, gott och lite annorlunda</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="lunch">
+  <div class="wrap">
+    <div class="lunch-grid">
+      <div class="reveal">
+        <span class="badge dark">Vardagar 11.30–13.30</span>
+        <h2>Dagens lunch, hemlagad</h2>
+        <p>Varje vardag lagar vi en riktig dagens — hemlagat, mättande och klart snabbt. Perfekt för lunchrasten mitt i stan.</p>
+        <a href="tel:0581-17733" class="btn btn-primary">Ring och boka bord</a>
+      </div>
+      <div class="lunch-price-card reveal reveal-delay-1">
+        <div class="price-row">
+          <div><span class="pname">Dagens lunch</span><span class="psub">Inkl. kaffe, sallad &amp; bröd</span></div>
+          <span class="pval">119:-</span>
+        </div>
+        <div class="price-row">
+          <div><span class="pname">Dagens — Take away</span><span class="psub">Samma dagens, med dig</span></div>
+          <span class="pval">113:-</span>
+        </div>
+        <div class="price-row">
+          <div><span class="pname">Fika &amp; hembakat</span><span class="psub">Kaffe + valfritt bakverk</span></div>
+          <span class="pval">från 59:-</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="gelato" id="gelato">
+  <div class="wrap">
+    <div class="gelato-grid">
+      <div class="gelato-visual reveal">
+        <img src="https://images.unsplash.com/photo-1629385744299-74b9cf013f52?w=900&q=80" alt="Hemgjord gelato i flera smaker" loading="lazy">
+      </div>
+      <div class="reveal reveal-delay-1">
+        <span class="badge gold">Egen tillverkning</span>
+        <h2>Gelato gjord med kärlek, varje dag</h2>
+        <p>Från klassisk vanilj till mer nyfikna smaker — vår gelato görs från grunden i egna köket, med de finaste råvarorna vi kan hitta. Inget färdigblandat, inget genvägstänk.</p>
+        <p>Sommartid är kön ibland lång — det brukar vara ett gott tecken.</p>
+        <div class="flavor-tags">
+          <span>Vanilj</span><span>Choklad</span><span>Pistage</span><span>Hallon</span><span>Mango</span><span>Säsongens smak</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="locations" id="hitta">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="badge">Hitta hit</span>
+      <h2>Två platser, samma omtanke</h2>
+      <p>Vårt huvudcafé mitt i centrum, och Regnbågen vid lasarettet — båda med samma hantverk.</p>
+    </div>
+    <div class="loc-grid reveal">
+      <div class="loc-card">
+        <span class="tag">Huvudcafé</span>
+        <h3>Café 37:an</h3>
+        <div class="loc-detail"><span class="k">Adress</span><span class="v">Kungsgatan 37, Lindesberg</span></div>
+        <div class="loc-detail"><span class="k">Telefon</span><span class="v"><a href="tel:0581-17733">0581-177 33</a></span></div>
+        <div class="loc-detail"><span class="k">Mån–fre</span><span class="v">08:30–18:00</span></div>
+        <div class="loc-detail"><span class="k">Lördag</span><span class="v">10:00–16:00</span></div>
+        <div class="loc-detail"><span class="k">Söndag</span><span class="v">11:00–15:00</span></div>
+      </div>
+      <div class="loc-card">
+        <span class="tag">Vid lasarettet</span>
+        <h3>37:an Regnbågen</h3>
+        <div class="loc-detail"><span class="k">Adress</span><span class="v">Stentäppsgatan 6, Lindesberg</span></div>
+        <div class="loc-detail"><span class="k">Telefon</span><span class="v"><a href="tel:0725227537">072-522 75 37</a></span></div>
+        <div class="loc-detail"><span class="k">Mån–fre</span><span class="v">08:00–16:00</span></div>
+        <div class="loc-detail"><span class="k">Lör–sön</span><span class="v">Stängt</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="reviews" id="recensioner">
+  <div class="wrap">
+    <div class="review-top reveal">
+      <div class="rating-big">
+        <span class="score">4.4</span>
+        <div>
+          <div class="stars">★★★★★</div>
+          <div class="count">213 omdömen på Google</div>
+        </div>
+      </div>
+      <div class="rating-big">
+        <span class="score" style="color:var(--gold);">100%</span>
+        <div>
+          <div class="stars">★★★★★</div>
+          <div class="count">rekommenderar oss på Facebook (19 omdömen)</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-grid reveal">
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p>"Platsen mitt i centrum var intressant... gott och vällagat, trevlig miljö och mycket prisvärt. Rekommenderar verkligen detta kafé."</p>
+        <div class="src">Tripadvisor-recension</div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p>"Väldigt trevligt bemötande, gott kaffe och glass."</p>
+        <div class="src">Kundernas.se-recension</div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p>Omtyckta av lindesbergare i alla åldrar — ett fik man återkommer till, gång på gång, år efter år.</p>
+        <div class="src">Google-recensioner, sammanfattat</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="reveal">
+        <span class="badge dark">Kontakt</span>
+        <h2>Vi ses på Kungsgatan</h2>
+        <p class="lead">Ring, maila eller kom förbi — vi finns mitt i centrum och ser fram emot ditt besök.</p>
+        <div class="contact-cta-row">
+          <a href="tel:0581-17733" class="btn btn-primary">Ring 0581-177 33</a>
+          <a href="mailto:info@37an.se" class="btn btn-ghost">Maila oss</a>
+        </div>
+      </div>
+      <div class="contact-info reveal reveal-delay-1">
+        <div class="row"><span class="k">Adress</span><span class="v">Kungsgatan 37, Lindesberg</span></div>
+        <div class="row"><span class="k">E-post</span><span class="v">info@37an.se</span></div>
+        <div class="row"><span class="k">Telefon</span><span class="v">0581-177 33</span></div>
+        <div class="row"><span class="k">Instagram</span><span class="v">@cafe37an</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-inner">
+    <span>© 2026 Café 37:an, Lindesberg. Alla rättigheter förbehållna.</span>
+    <div class="social-row">
+      <a href="https://www.instagram.com" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.facebook.com" target="_blank" rel="noopener">Facebook</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// header scroll state
+const header = document.getElementById('siteHeader');
+window.addEventListener('scroll', () => {
+  header.classList.toggle('scrolled', window.scrollY > 20);
+});
+
+// mobile menu
+const burger = document.getElementById('burgerBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+burger.addEventListener('click', () => {
+  mobileMenu.classList.toggle('open');
+});
+document.querySelectorAll('.mobile-menu a').forEach(a => {
+  a.addEventListener('click', () => mobileMenu.classList.remove('open'));
+});
+
+// scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('in');
+      observer.unobserve(entry.target);
+    }
+  });
+}, {threshold:0.15});
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
